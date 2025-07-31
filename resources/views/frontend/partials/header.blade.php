@@ -64,7 +64,7 @@
                                 <span class="cart-count">3</span>
                             </a>
                             <li>
-                                <a class="btn_login" href="#">Login</a>
+                                <a class="btn_login" href="{{route ('admin.dashboard')}}">Login</a>
                             </li>
                             <li>
                                 <a class="btn_1" href="#">Sign Up</a>

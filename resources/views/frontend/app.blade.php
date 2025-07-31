@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Etrain</title>
    @include('frontend.partials.style')
-
 </head>
 
 <body>
