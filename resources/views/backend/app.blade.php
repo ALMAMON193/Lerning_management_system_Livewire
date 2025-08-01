@@ -10,7 +10,8 @@
     <meta name="robots" content="noindex, nofollow">
     <title>Dreams Pos admin template</title>
     @include('backend.partials.style')
-
+    {!! ToastMagic::styles() !!}
+    @livewireStyles
 </head>
 <body>
 <div id="global-loader">
@@ -22,6 +23,8 @@
     @include('backend.partials.sidebar')
     {{ $slot }}
 </div>
+@livewireScripts
+{!! ToastMagic::scripts() !!}
 @include('backend.partials.script')
 </body>
 </html>
