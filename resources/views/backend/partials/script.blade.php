@@ -10,3 +10,5 @@
 <script src="{{asset('backend/plugins/select2/js/select2.min.js')}}"></script>
 <script src="{{asset('backend/plugins/sweetalert/sweetalert2.all.min.js')}}"></script>
 <script src="{{asset('backend/plugins/sweetalert/sweetalerts.min.js')}}"></script>
+
+

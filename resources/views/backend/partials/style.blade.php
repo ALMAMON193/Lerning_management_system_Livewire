@@ -10,5 +10,3 @@
 <link rel="stylesheet" href="{{ asset('backend/plugins/select2/css/select2.min.css') }}">
 <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
 
-<!-- Livewire -->
-@livewireStyles

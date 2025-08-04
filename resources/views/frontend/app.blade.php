@@ -8,18 +8,14 @@
     <title>Etrain</title>
    @include('frontend.partials.style')
 </head>
-
 <body>
 <!--::header part start::-->
 @include('frontend.partials.header')
 <!-- Header part end-->
-
   @yield('content')
-
 <!-- footer part start-->
 @include('frontend.partials.footer')
 <!-- footer part end-->
-
 <!-- jquery plugins here-->
 @include('frontend.partials.script')
 </body>

@@ -3,7 +3,7 @@
 namespace App\Livewire\Admin\Course\Category;
 
 use App\Models\Category;
-use Devrabiul\ToastMagic\ToastMagic;
+use Devrabiul\ToastMagic\Facades\ToastMagic;
 use Illuminate\Support\Str;
 use Livewire\Component;
 
@@ -22,7 +22,8 @@ class CreateComponent extends Component
             'name' => $this->name,
             'slug' => $slug,
         ]);
-        return redirect()->route('admin.course.categories.index');
+        ToastMagic::success('Category Created Successfully');
+        return redirect()->route('admin.categories.index');
     }
     public function render()
     {

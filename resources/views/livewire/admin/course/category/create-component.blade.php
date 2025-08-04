@@ -20,7 +20,7 @@
                         </div>
                         <div class="col-lg-12">
                             <button type="submit" class="btn btn-submit me-2">Create Category</button>
-                            <a href="{{ route('admin.course.categories.index') }}" class="btn btn-cancel">Cancel</a>
+                            <a href="{{ route('admin.categories.index') }}" class="btn btn-cancel">Cancel</a>
                         </div>
                     </div>
                 </form>

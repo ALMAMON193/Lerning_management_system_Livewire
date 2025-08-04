@@ -7,14 +7,9 @@ use Livewire\Component;
 
 class IndexComponent extends Component
 {
-    public function getCategories ()
-    {
-        return Category::orderBy ('name')->get ();
-    }
-
     public function render ()
     {
-        $categories = $this->getCategories ();
+        $categories = Category::all();
 
         return view ('livewire.admin.course.category.index-component', compact ('categories'))
             ->layout ('backend.app')

@@ -2,133 +2,90 @@
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h4>Product Add</h4>
-                <h6>Create new product</h6>
+                <h4>Create Course</h4>
+                <h6>Add a new course</h6>
             </div>
         </div>
 
         <div class="card">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Product Name</label>
-                            <input type="text">
+                <form wire:submit.prevent="store">
+                    <div class="row">
+                        {{-- Title --}}
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Course Title</label>
+                                <input type="text" wire:model="title" class="form-control">
+                                @error('title') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Category</label>
-                            <select class="select">
-                                <option>Choose Category</option>
-                                <option>Computers</option>
-                            </select>
+
+                        {{-- Category --}}
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select wire:model="category_id" class="form-control">
+                                    <option value="">Select Category</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('category_id') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Sub Category</label>
-                            <select class="select">
-                                <option>Choose Sub Category</option>
-                                <option>Fruits</option>
-                            </select>
+
+                        {{-- Thumbnail --}}
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Thumbnail</label>
+                                <input type="file" wire:model="thumbnail" class="form-control">
+                                @if ($thumbnail)
+                                    <img src="{{ $thumbnail->temporaryUrl() }}" class="mt-2" style="max-width: 150px;" alt="">
+                                @endif
+                                @error('thumbnail') <small class="text-danger">{{ $message }}</small> @enderror
+                                <div wire:loading wire:target="thumbnail" class="text-primary mt-1">Uploading...</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Brand</label>
-                            <select class="select">
-                                <option>Choose Brand</option>
-                                <option>Brand</option>
-                            </select>
+
+                        {{-- Price --}}
+                        <div class="col-lg-6 col-sm-12">
+                            <div class="form-group">
+                                <label>Price ($)</label>
+                                <input type="number" wire:model="price" class="form-control" min="0" step="0.01">
+                                @error('price') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Unit</label>
-                            <select class="select">
-                                <option>Choose Unit</option>
-                                <option>Unit</option>
-                            </select>
+
+                        {{-- Level --}}
+                        <div class="col-lg-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Level</label>
+                                <select wire:model="level" class="form-control">
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                                @error('level') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>SKU</label>
-                            <input type="text">
+                        {{-- Description --}}
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea wire:model="description" class="form-control" rows="4"></textarea>
+                                @error('description') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Minimum Qty</label>
-                            <input type="text">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Quantity</label>
-                            <input type="text">
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Tax</label>
-                            <select class="select">
-                                <option>Choose Tax</option>
-                                <option>2%</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Discount Type</label>
-                            <select class="select">
-                                <option>Percentage</option>
-                                <option>10%</option>
-                                <option>20%</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Price</label>
-                            <input type="text">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label> Status</label>
-                            <select class="select">
-                                <option>Closed</option>
-                                <option>Open</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label> Product Image</label>
-                            <div class="image-upload">
-                                <input type="file">
-                                <div class="image-uploads">
-                                    <img src="assets/img/icons/upload.svg" alt="img">
-                                    <h4>Drag and drop a file to upload</h4>
-                                </div>
+                        {{-- Submit Buttons --}}
+                        <div class="col-12">
+                            <div class="form-group text-end">
+                                <button type="submit" class="btn btn-submit">Submit</button>
+                                <a href="{{ route('admin.courses.index') }}" class="btn btn-cancel">Cancel</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <a href="javascript:void(0);" class="btn btn-submit me-2">Submit</a>
-                        <a href="productlist.html" class="btn btn-cancel">Cancel</a>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
-
     </div>
 </div>

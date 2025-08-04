@@ -2,153 +2,88 @@
     <div class="content">
         <div class="page-header">
             <div class="page-title">
-                <h4>Product Edit</h4>
-                <h6>Update your product</h6>
+                <h4>Edit Course</h4>
+                <h6>Update your course details</h6>
             </div>
         </div>
 
         <div class="card">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Product Name</label>
-                            <input type="text" value="Macbook pro">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Category</label>
-                            <select class="select">
-                                <option>Computers</option>
-                                <option>Mac</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Sub Category</label>
-                            <select class="select">
-                                <option>None</option>
-                                <option>option1</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Brand</label>
-                            <select class="select">
-                                <option>None</option>
-                                <option>option1</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Unit</label>
-                            <select class="select">
-                                <option>Piece</option>
-                                <option>Kg</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>SKU</label>
-                            <input type="text" value="PT0002">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Minimum Qty</label>
-                            <input type="text" value="5">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Quantity</label>
-                            <input type="text" value="50">
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea class="form-control">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</textarea>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Tax</label>
-                            <select class="select">
-                                <option>Choose Tax</option>
-                                <option>2%</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Discount Type</label>
-                            <select class="select">
-                                <option>Percentage</option>
-                                <option>10%</option>
-                                <option>20%</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label>Price</label>
-                            <input type="text" value="1500.00">
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6 col-12">
-                        <div class="form-group">
-                            <label> Status</label>
-                            <select class="select">
-                                <option>Active</option>
-                                <option>Open</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="form-group">
-                            <label> Product Image</label>
-                            <div class="image-upload">
-                                <input type="file">
-                                <div class="image-uploads">
-                                    <img src="assets/img/icons/upload.svg" alt="img">
-                                    <h4>Drag and drop a file to upload</h4>
-                                </div>
+                <form wire:submit.prevent="update" enctype="multipart/form-data">
+                    <div class="row">
+                        {{-- Course Title --}}
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Course Title</label>
+                                <input type="text" wire:model.lazy="title" class="form-control">
+                                @error('title') <small class="text-danger">{{ $message }}</small> @enderror
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="product-list">
-                            <ul class="row">
-                                <li>
-                                    <div class="productviews">
-                                        <div class="productviewsimg">
-                                            <img src="assets/img/icons/macbook.svg" alt="img">
-                                        </div>
-                                        <div class="productviewscontent">
-                                            <div class="productviewsname">
-                                                <h2>macbookpro.jpg</h2>
-                                                <h3>581kb</h3>
-                                            </div>
-                                            <a href="javascript:void(0);" class="hideset">x</a>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
+
+                        {{-- Price --}}
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Price</label>
+                                <input type="text" wire:model.lazy="price" class="form-control">
+                                @error('price') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
+                        </div>
+
+                        {{-- Level --}}
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Level</label>
+                                <input type="text" wire:model.lazy="level" class="form-control">
+                                @error('level') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
+                        </div>
+
+                        {{-- Status --}}
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select wire:model.lazy="status" class="form-control">
+                                    <option value="">Select status</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                                @error('status') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
+                        </div>
+
+                        {{-- Description --}}
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea wire:model.lazy="description" class="form-control" rows="4"></textarea>
+                                @error('description') <small class="text-danger">{{ $message }}</small> @enderror
+                            </div>
+                        </div>
+
+                        {{-- Thumbnail --}}
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Thumbnail</label>
+                                <input type="file" wire:model="thumbnail" class="form-control">
+                                @error('thumbnail') <small class="text-danger">{{ $message }}</small> @enderror
+
+                                {{-- Preview New or Existing Thumbnail --}}
+                                @if ($thumbnail)
+                                    <img src="{{ $thumbnail->temporaryUrl() }}" width="100" class="mt-2">
+                                @elseif ($course->thumbnail)
+                                    <img src="{{ asset('storage/' . $course->thumbnail) }}" width="100" class="mt-2">
+                                @endif
+                            </div>
+                        </div>
+
+                        {{-- Submit Button --}}
+                        <div class="col-lg-12 mt-3">
+                            <button type="submit" class="btn btn-primary me-2">Update</button>
+                            <a href="{{ route('admin.courses.index') }}" class="btn btn-secondary">Cancel</a>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <a href="javascript:void(0);" class="btn btn-submit me-2">Update</a>
-                        <a href="productlist.html" class="btn btn-cancel">Cancel</a>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
-
     </div>
 </div>

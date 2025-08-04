@@ -17,4 +17,8 @@ class Certificate extends Model
     {
         return $this->belongsTo(Course::class);
     }
+    protected $casts = [
+        'issued_at' => 'datetime',
+    ];
+
 }
